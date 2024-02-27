@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import me.vaimon.aspenexample.AspenApp
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.navigation.NavigationDestination
+import me.vaimon.aspenexample.ui.common.CompositeHeader
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
 import me.vaimon.aspenexample.ui.theme.headlineLargeSecondary
 import me.vaimon.aspenexample.util.PreviewMediumScreen
@@ -71,16 +72,10 @@ private fun WelcomeBody(
                 color = Color.White
             )
             Spacer(modifier = Modifier.weight(1f))
-            Text(
-                text = stringResource(R.string.title_header),
-                style = MaterialTheme.typography.headlineLargeSecondary,
-                color = Color.White,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Text(
-                text = stringResource(R.string.title_body),
-                style = MaterialTheme.typography.headlineLarge,
-                color = Color.White,
+            CompositeHeader(
+                headerText = stringResource(R.string.title_body),
+                secondaryHeaderText = stringResource(R.string.title_header),
+                textColor = Color.White,
                 modifier = Modifier.fillMaxWidth()
             )
             Spacer(modifier = Modifier.height(16.dp))

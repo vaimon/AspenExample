@@ -3,4 +3,8 @@
     <string name="title_body">Luxurious\nVacation</string>
     <string name="title_header">Plan your</string>
     <string name="btn_explore">Explore</string>
+    <string name="aspen">Aspen</string>
+    <string name="location_default">Aspen, USA</string>
+    <string name="search_label">Find things to do</string>
+    <string name="explore">Explore</string>
 </resources>

@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import me.vaimon.aspenexample.ui.screens.home.HomeDestination
 import me.vaimon.aspenexample.ui.screens.home.HomeScreen
+import me.vaimon.aspenexample.ui.screens.home.HomeViewModel
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeDestination
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeScreen
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeViewModel
@@ -37,7 +38,11 @@ fun AspenNavHost(
         }
 
         composable(route = HomeDestination.route) {
-            HomeScreen()
+            val viewModel = hiltViewModel<HomeViewModel>()
+            HomeScreen(
+                viewModel = viewModel,
+                navigateToDetails = { }
+            )
         }
     }
 }

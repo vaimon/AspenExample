@@ -126,6 +126,16 @@ val Typography = Typography(
         fontFamily = figtreeBlackFontFamily,
         fontSize = 16.sp
     ),
+    labelSmall = TextStyle(
+        fontFamily = figtreeLightFontFamily,
+        fontSize = 12.sp,
+        color = DarkGray
+    ),
+    bodySmall = TextStyle(
+        fontFamily = figtreeLightFontFamily,
+        fontSize = 13.sp,
+        color = Gray
+    ),
 )
 
 val Typography.headlineLargeSecondary: TextStyle
