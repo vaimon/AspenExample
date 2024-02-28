@@ -122,6 +122,10 @@ val Typography = Typography(
         fontFamily = montserratRegularFontFamily,
         fontSize = 40.sp
     ),
+    headlineMedium = TextStyle(
+        fontFamily = montserratBoldFontFamily,
+        fontSize = 18.sp
+    ),
     labelMedium = TextStyle(
         fontFamily = figtreeBlackFontFamily,
         fontSize = 16.sp
@@ -144,5 +148,23 @@ val Typography.headlineLargeSecondary: TextStyle
         return TextStyle(
             fontFamily = montserratLightFontFamily,
             fontSize = 24.sp
+        )
+    }
+
+val Typography.labelSmallVariant: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = figtreeBoldFontFamily,
+            fontSize = 12.sp
+        )
+    }
+
+val Typography.labelSmallChip: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = figtreeRegularFontFamily,
+            fontSize = 12.sp
         )
     }
