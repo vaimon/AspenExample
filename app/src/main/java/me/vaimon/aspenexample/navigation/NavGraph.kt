@@ -4,8 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import me.vaimon.aspenexample.ui.screens.details.DetailsDestination
 import me.vaimon.aspenexample.ui.screens.details.DetailsScreen
 import me.vaimon.aspenexample.ui.screens.details.DetailsViewModel
@@ -15,10 +17,6 @@ import me.vaimon.aspenexample.ui.screens.home.HomeViewModel
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeDestination
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeScreen
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeViewModel
-
-interface NavigationDestination {
-    val route: String
-}
 
 @Composable
 fun AspenNavHost(
@@ -35,8 +33,8 @@ fun AspenNavHost(
             WelcomeScreen(
                 viewModel = viewModel,
                 navigateToHome = {
-                    navController.navigate(HomeDestination.route){
-                        popUpTo(WelcomeDestination.route){
+                    navController.navigate(HomeDestination.route) {
+                        popUpTo(WelcomeDestination.route) {
                             inclusive = true
                         }
                     }
@@ -49,13 +47,20 @@ fun AspenNavHost(
             val viewModel = hiltViewModel<HomeViewModel>()
             HomeScreen(
                 viewModel = viewModel,
-                navigateToDetails = {
-                    navController.navigate(DetailsDestination.route)
+                navigateToDetails = { id ->
+                    navController.navigate(DetailsDestination.getDestinationWithArg(id))
                 }
             )
         }
 
-        composable(route = DetailsDestination.route){
+        composable(
+            route = DetailsDestination.route,
+            arguments = listOf(
+                navArgument(DetailsDestination.argName) {
+                    type = NavType.IntType
+                }
+            )
+        ) {
             val viewModel = hiltViewModel<DetailsViewModel>()
             DetailsScreen(
                 viewModel = viewModel,

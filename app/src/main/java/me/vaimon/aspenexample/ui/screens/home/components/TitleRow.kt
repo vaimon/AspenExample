@@ -11,10 +11,10 @@ import androidx.compose.ui.Modifier
 import me.vaimon.aspenexample.ui.theme.labelSmallVariant
 
 @Composable
-fun TitleRow(
+fun TitleWithAction(
     titleText: String,
     modifier: Modifier = Modifier,
-    titleActionLabel: String? = null,
+    titleActionText: String? = null,
     titleAction: (() -> Unit)? = null,
 ) {
     Row(
@@ -26,7 +26,7 @@ fun TitleRow(
             text = titleText,
             style = MaterialTheme.typography.headlineMedium
         )
-        titleActionLabel?.let { label ->
+        titleActionText?.let { label ->
             Text(
                 text = label,
                 style = MaterialTheme.typography.labelSmallVariant,

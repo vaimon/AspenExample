@@ -41,7 +41,7 @@ import me.vaimon.aspenexample.ui.screens.home.components.CurrentLocationLabel
 import me.vaimon.aspenexample.ui.screens.home.components.LargeHotelCard
 import me.vaimon.aspenexample.ui.screens.home.components.SearchField
 import me.vaimon.aspenexample.ui.screens.home.components.SmallTourCard
-import me.vaimon.aspenexample.ui.screens.home.components.TitleRow
+import me.vaimon.aspenexample.ui.screens.home.components.TitleWithAction
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
 import me.vaimon.aspenexample.ui.theme.LabelGray
 import me.vaimon.aspenexample.ui.theme.SoftBlue
@@ -55,7 +55,7 @@ object HomeDestination : NavigationDestination {
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
-    navigateToDetails: () -> Unit
+    navigateToDetails: (Int) -> Unit
 ) {
     val hotels by viewModel.hotelsState.collectAsState()
     val tours by viewModel.toursState.collectAsState()
@@ -78,7 +78,7 @@ fun HomeScreen(
 fun HomeBody(
     hotels: List<Hotel>,
     tours: List<Tour>,
-    navigateToDetails: () -> Unit,
+    navigateToDetails: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier.padding(vertical = 40.dp)) {
@@ -108,9 +108,9 @@ fun HomeBody(
         )
 
         Spacer(modifier = Modifier.height(32.dp))
-        TitleRow(
+        TitleWithAction(
             titleText = stringResource(R.string.title_popular),
-            titleActionLabel = stringResource(R.string.label_see_all),
+            titleActionText = stringResource(R.string.label_see_all),
             titleAction = {},
             modifier = padding
         )
@@ -124,7 +124,7 @@ fun HomeBody(
                 LargeHotelCard(
                     it,
                     modifier = Modifier.height(240.dp).clickable {
-                        navigateToDetails()
+                        navigateToDetails(it.id)
                     }
                 )
             }
@@ -132,7 +132,7 @@ fun HomeBody(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        TitleRow(
+        TitleWithAction(
             titleText = stringResource(R.string.title_recommended),
             modifier = padding
         )

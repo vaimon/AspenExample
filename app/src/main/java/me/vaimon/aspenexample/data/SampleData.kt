@@ -38,6 +38,8 @@ object SampleData {
         )
     )
 
+    fun getHotelById(id: Int): Hotel = hotels[id - 1]
+
     val tours = listOf(
         Tour(
             "Explore Aspen",
