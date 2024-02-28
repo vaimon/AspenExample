@@ -50,6 +50,18 @@ object SampleData {
             R.drawable.rechotel2,
             2,
             3
+        ),
+        Tour(
+            "Lucky Aspen",
+            R.drawable.hotel1,
+            11,
+            12
+        ),
+        Tour(
+            "Night Aspen",
+            R.drawable.hotel2,
+            7,
+            8
         )
     )
 }

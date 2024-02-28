@@ -6,6 +6,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import me.vaimon.aspenexample.ui.screens.details.DetailsDestination
+import me.vaimon.aspenexample.ui.screens.details.DetailsScreen
+import me.vaimon.aspenexample.ui.screens.details.DetailsViewModel
 import me.vaimon.aspenexample.ui.screens.home.HomeDestination
 import me.vaimon.aspenexample.ui.screens.home.HomeScreen
 import me.vaimon.aspenexample.ui.screens.home.HomeViewModel
@@ -32,7 +35,12 @@ fun AspenNavHost(
             WelcomeScreen(
                 viewModel = viewModel,
                 navigateToHome = {
-                    navController.navigate(HomeDestination.route)
+                    navController.navigate(HomeDestination.route){
+                        popUpTo(WelcomeDestination.route){
+                            inclusive = true
+                        }
+                    }
+
                 }
             )
         }
@@ -41,7 +49,19 @@ fun AspenNavHost(
             val viewModel = hiltViewModel<HomeViewModel>()
             HomeScreen(
                 viewModel = viewModel,
-                navigateToDetails = { }
+                navigateToDetails = {
+                    navController.navigate(DetailsDestination.route)
+                }
+            )
+        }
+
+        composable(route = DetailsDestination.route){
+            val viewModel = hiltViewModel<DetailsViewModel>()
+            DetailsScreen(
+                viewModel = viewModel,
+                navigateBack = {
+                    navController.navigateUp()
+                }
             )
         }
     }

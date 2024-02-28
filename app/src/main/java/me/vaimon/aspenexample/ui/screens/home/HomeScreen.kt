@@ -1,62 +1,33 @@
 package me.vaimon.aspenexample.ui.screens.home
 
-import android.annotation.SuppressLint
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.absoluteOffset
-import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardColors
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilterChip
-import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconToggleButton
-import androidx.compose.material3.IconToggleButtonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.SearchBar
-import androidx.compose.material3.SearchBarDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
@@ -67,24 +38,15 @@ import me.vaimon.aspenexample.ui.models.Hotel
 import me.vaimon.aspenexample.ui.models.Tour
 import me.vaimon.aspenexample.ui.screens.home.components.CategoryRow
 import me.vaimon.aspenexample.ui.screens.home.components.CurrentLocationLabel
-import me.vaimon.aspenexample.ui.screens.home.components.FavouriteButton
 import me.vaimon.aspenexample.ui.screens.home.components.LargeHotelCard
 import me.vaimon.aspenexample.ui.screens.home.components.SearchField
+import me.vaimon.aspenexample.ui.screens.home.components.SmallTourCard
 import me.vaimon.aspenexample.ui.screens.home.components.TitleRow
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
-import me.vaimon.aspenexample.ui.theme.Gray
 import me.vaimon.aspenexample.ui.theme.LabelGray
-import me.vaimon.aspenexample.ui.theme.LightGray
-import me.vaimon.aspenexample.ui.theme.Red
 import me.vaimon.aspenexample.ui.theme.SoftBlue
-import me.vaimon.aspenexample.ui.theme.Yellow
-import me.vaimon.aspenexample.ui.theme.labelSmallChip
 import me.vaimon.aspenexample.ui.theme.labelSmallChipVariant
-import me.vaimon.aspenexample.ui.theme.labelSmallVariant
 import me.vaimon.aspenexample.util.PreviewMediumScreen
-import java.text.DecimalFormat
-import java.text.DecimalFormatSymbols
-import java.util.Locale
 
 object HomeDestination : NavigationDestination {
     override val route = "home"
@@ -103,6 +65,7 @@ fun HomeScreen(
         HomeBody(
             hotels,
             tours,
+            navigateToDetails,
             modifier = Modifier
                 .padding(it)
                 .verticalScroll(scrollState)
@@ -111,11 +74,11 @@ fun HomeScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeBody(
     hotels: List<Hotel>,
     tours: List<Tour>,
+    navigateToDetails: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier.padding(vertical = 40.dp)) {
@@ -160,7 +123,9 @@ fun HomeBody(
             items(hotels) {
                 LargeHotelCard(
                     it,
-                    modifier = Modifier.height(240.dp)
+                    modifier = Modifier.height(240.dp).clickable {
+                        navigateToDetails()
+                    }
                 )
             }
         }
@@ -184,47 +149,6 @@ fun HomeBody(
                 )
             }
         }
-    }
-}
-
-@Composable
-fun SmallTourCard(
-    tour: Tour,
-    modifier: Modifier = Modifier
-) {
-    Card(
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline),
-        colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
-        ),
-        shape = RoundedCornerShape(16.dp),
-        modifier = modifier
-    ) {
-        Box{
-            Image(
-                painter = painterResource(id = tour.image),
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .padding(top = 4.dp, start = 4.dp, end = 4.dp, bottom = 6.dp)
-                    .aspectRatio(1.72f)
-                    .fillMaxWidth()
-                    .clip(RoundedCornerShape(12.dp))
-            )
-            TourLengthLabel(
-                days = tour.daysCount,
-                nights = tour.nightsCount,
-                modifier = Modifier
-                    .padding(horizontal = 9.dp)
-                    .align(Alignment.BottomEnd)
-            )
-        }
-        Text(
-            text = tour.title,
-            style = MaterialTheme.typography.labelSmallVariant,
-            modifier = Modifier.padding(horizontal = 4.dp)
-        )
-        HotDealLabel()
     }
 }
 
@@ -275,6 +199,7 @@ fun PreviewHome() {
             HomeBody(
                 SampleData.hotels,
                 SampleData.tours,
+                navigateToDetails = {},
                 modifier = Modifier
                     .padding(it)
                     .verticalScroll(rememberScrollState())
