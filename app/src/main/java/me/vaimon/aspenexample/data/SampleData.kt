@@ -2,6 +2,7 @@ package me.vaimon.aspenexample.data
 
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.ui.models.Hotel
+import me.vaimon.aspenexample.ui.models.Tour
 
 object SampleData {
     val hotels = listOf(
@@ -27,13 +28,28 @@ object SampleData {
         ),
         Hotel(
             id = 3,
-            name = "Aspen Hotel",
+            name = "Aspen Hotel & Spa All Inclusive",
             description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum lobortis tortor. ",
             image = R.drawable.hotel3,
             rating = 4.9,
             reviewCount = 10442,
             price = 279,
             facilities = listOf()
+        )
+    )
+
+    val tours = listOf(
+        Tour(
+            "Explore Aspen",
+            R.drawable.rechotel1,
+            4,
+            5
+        ),
+        Tour(
+            "Luxurious Aspen",
+            R.drawable.rechotel2,
+            2,
+            3
         )
     )
 }

@@ -168,3 +168,12 @@ val Typography.labelSmallChip: TextStyle
             fontSize = 12.sp
         )
     }
+
+val Typography.labelSmallChipVariant: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = montserratBoldFontFamily,
+            fontSize = 10.sp
+        )
+    }

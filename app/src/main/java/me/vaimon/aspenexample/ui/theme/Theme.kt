@@ -19,6 +19,8 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Gray,
     surfaceVariant = SurfaceGray,
     onSurfaceVariant = Color.White,
+    outline = VeryLightGray,
+    primaryContainer = Color.White
 )
 
 @Composable
