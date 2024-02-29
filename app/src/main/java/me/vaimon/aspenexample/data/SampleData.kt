@@ -29,7 +29,7 @@ object SampleData {
         Hotel(
             id = 1,
             name = "Alley Palace",
-            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum lobortis tortor. Aliquam mollis felis tincidunt consequat pellentesque. Vivamus pulvinar mauris tempor elit bibendum, nec tincidunt magna tempus.",
+            description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum lobortis tortor. Aliquam mollis felis tincidunt consequat pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum lobortis tortor. Aliquam mollis felis tincidunt consequat pellentesque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In rutrum lobortis tortor. Aliquam mollis felis tincidunt consequat pellentesque. Vivamus pulvinar mauris tempor elit bibendum, nec tincidunt magna tempus.",
             image = R.drawable.hotel1,
             rating = 4.1,
             reviewCount = 1298,

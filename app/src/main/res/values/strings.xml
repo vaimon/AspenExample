@@ -15,4 +15,6 @@
     <string name="price">$%1$s</string>
     <string name="label_price">Price</string>
     <string name="action_book">Book Now</string>
+    <string name="label_read_more">Read more</string>
+    <string name="label_hide">Hide</string>
 </resources>
