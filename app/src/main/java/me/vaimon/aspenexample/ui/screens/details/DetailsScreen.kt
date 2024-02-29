@@ -3,11 +3,10 @@ package me.vaimon.aspenexample.ui.screens.details
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.gestures.rememberScrollableState
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,13 +14,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -29,36 +27,32 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.data.SampleData
-
 import me.vaimon.aspenexample.navigation.NavigationDestinationWithArg
 import me.vaimon.aspenexample.ui.common.FavouriteButton
 import me.vaimon.aspenexample.ui.common.TitleWithAction
-import me.vaimon.aspenexample.ui.models.Facility
 import me.vaimon.aspenexample.ui.models.Hotel
 import me.vaimon.aspenexample.ui.screens.details.components.ExpandableText
 import me.vaimon.aspenexample.ui.screens.details.components.FacilitiesRow
+import me.vaimon.aspenexample.ui.screens.details.components.PriceBottomBar
 import me.vaimon.aspenexample.ui.screens.details.components.ReviewsStats
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
-import me.vaimon.aspenexample.ui.theme.DirtyYellow
 import me.vaimon.aspenexample.ui.theme.Gray
+import me.vaimon.aspenexample.ui.theme.Green
 import me.vaimon.aspenexample.ui.theme.ShadowBlue
+import me.vaimon.aspenexample.ui.theme.labelExtraBold
+import me.vaimon.aspenexample.ui.theme.labelSmallVariant
 import me.vaimon.aspenexample.util.PreviewMediumScreen
 
 object DetailsDestination : NavigationDestinationWithArg<Int>() {
@@ -72,11 +66,38 @@ fun DetailsScreen(
     navigateBack: () -> Unit
 ) {
     val hotel by viewModel.hotelState.collectAsState()
-    Scaffold {
-        DetailsBody(
-            hotel = hotel,
-            modifier = Modifier.padding(it)
-        )
+    val scrollableContentState = rememberScrollState()
+
+    Scaffold(
+        bottomBar = {
+            PriceBottomBar(
+                price = hotel.price,
+                onBtnBookPressed = {}
+            )
+        }
+    ) {
+        Box {
+            DetailsBody(
+                hotel = hotel,
+                modifier = Modifier
+                    .padding(it)
+                    .verticalScroll(scrollableContentState)
+            )
+            IconButton(
+                onClick = navigateBack,
+                modifier = Modifier
+                    .padding(32.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .size(40.dp)
+                    .background(MaterialTheme.colorScheme.background)
+            ) {
+                Icon(
+                    painter = painterResource(R.drawable.icon_back),
+                    tint = Gray,
+                    contentDescription = null,
+                )
+            }
+        }
     }
 }
 
@@ -117,7 +138,7 @@ fun FullHotelImage(
     @DrawableRes image: Int,
     onFavouriteClick: () -> Unit,
     modifier: Modifier = Modifier
-){
+) {
     Box(
         modifier = modifier
     ) {
@@ -176,6 +197,26 @@ fun HotelInfo(
             description = hotel.description
         )
     }
+}
+
+
+
+@Composable
+fun PriceLabel(
+    price: Int,
+    modifier: Modifier = Modifier
+) = Column(
+    modifier = modifier
+) {
+    Text(
+        stringResource(R.string.label_price),
+        style = MaterialTheme.typography.labelSmallVariant,
+    )
+    Text(
+        stringResource(R.string.price, price),
+        style = MaterialTheme.typography.labelExtraBold,
+        color = Green
+    )
 }
 
 @PreviewMediumScreen

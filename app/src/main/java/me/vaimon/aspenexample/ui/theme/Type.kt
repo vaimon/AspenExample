@@ -182,3 +182,12 @@ val Typography.labelSmallChipVariant: TextStyle
             fontSize = 10.sp
         )
     }
+
+val Typography.labelExtraBold: TextStyle
+    @Composable
+    get() {
+        return TextStyle(
+            fontFamily = figtreeBlackFontFamily,
+            fontSize = 24.sp
+        )
+    }

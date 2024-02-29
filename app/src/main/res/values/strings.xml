@@ -12,4 +12,7 @@
     <string name="title_recommended">Recommended</string>
     <string name="label_hot_deal">Hot deal</string>
     <string name="full_reviews_description">%1$s (%2$s Reviews)</string>
+    <string name="price">$%1$s</string>
+    <string name="label_price">Price</string>
+    <string name="action_book">Book Now</string>
 </resources>
