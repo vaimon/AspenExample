@@ -48,7 +48,7 @@ fun PriceBottomBar(
                 )
             },
             shape = buttonShape,
-            onClick = { /*TODO*/ },
+            onClick = onBtnBookPressed,
             modifier = Modifier
                 .fillMaxWidth()
                 .shadow(

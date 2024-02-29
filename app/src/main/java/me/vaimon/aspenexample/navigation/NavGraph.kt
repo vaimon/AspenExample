@@ -1,7 +1,13 @@
 package me.vaimon.aspenexample.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.scaleIn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.IntOffset
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -28,6 +34,11 @@ fun AspenNavHost(
         startDestination = WelcomeDestination.route,
         modifier = modifier
     ) {
+        val springAnimationSpec = spring<IntOffset>(
+            dampingRatio = Spring.DampingRatioNoBouncy,
+            stiffness = Spring.StiffnessLow
+        )
+
         composable(route = WelcomeDestination.route) {
             val viewModel = hiltViewModel<WelcomeViewModel>()
             WelcomeScreen(
@@ -43,13 +54,20 @@ fun AspenNavHost(
             )
         }
 
-        composable(route = HomeDestination.route) {
+        composable(
+            route = HomeDestination.route,
+            enterTransition = {
+                scaleIn(
+                    animationSpec = tween()
+                )
+            },
+            ) {
             val viewModel = hiltViewModel<HomeViewModel>()
             HomeScreen(
                 viewModel = viewModel,
                 navigateToDetails = { id ->
                     navController.navigate(DetailsDestination.getDestinationWithArg(id))
-                }
+                },
             )
         }
 
@@ -59,7 +77,19 @@ fun AspenNavHost(
                 navArgument(DetailsDestination.argName) {
                     type = NavType.IntType
                 }
-            )
+            ),
+            enterTransition = {
+                slideIntoContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Up,
+                    animationSpec = springAnimationSpec
+                )
+            },
+            exitTransition = {
+                slideOutOfContainer(
+                    towards = AnimatedContentTransitionScope.SlideDirection.Down,
+                    animationSpec = springAnimationSpec
+                )
+            }
         ) {
             val viewModel = hiltViewModel<DetailsViewModel>()
             DetailsScreen(
