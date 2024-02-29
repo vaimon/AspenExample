@@ -1,6 +1,7 @@
 package me.vaimon.aspenexample.ui.screens.details
 
 import androidx.annotation.DrawableRes
+import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.rememberScrollableState
@@ -54,6 +55,7 @@ import me.vaimon.aspenexample.ui.theme.ShadowBlue
 import me.vaimon.aspenexample.ui.theme.labelExtraBold
 import me.vaimon.aspenexample.ui.theme.labelSmallVariant
 import me.vaimon.aspenexample.util.PreviewMediumScreen
+import me.vaimon.aspenexample.util.conditional
 
 object DetailsDestination : NavigationDestinationWithArg<Int>() {
     override val routeBase = "details"
@@ -70,9 +72,17 @@ fun DetailsScreen(
 
     Scaffold(
         bottomBar = {
+            val shadowAnimation by animateDpAsState(
+                targetValue = if(scrollableContentState.canScrollForward) 8.dp else 0.dp,
+                label = "shadowAnimation"
+            )
             PriceBottomBar(
                 price = hotel.price,
-                onBtnBookPressed = {}
+                onBtnBookPressed = {},
+                modifier = Modifier
+                    .shadow(
+                        elevation = shadowAnimation,
+                    )
             )
         }
     ) {
@@ -115,6 +125,7 @@ fun DetailsBody(
             onFavouriteClick = { /*TODO*/ }
         )
 
+        Spacer(modifier = Modifier.height(14.dp))
         HotelInfo(
             hotel = hotel,
             modifier = Modifier.padding(horizontal = 20.dp)
@@ -199,25 +210,6 @@ fun HotelInfo(
     }
 }
 
-
-
-@Composable
-fun PriceLabel(
-    price: Int,
-    modifier: Modifier = Modifier
-) = Column(
-    modifier = modifier
-) {
-    Text(
-        stringResource(R.string.label_price),
-        style = MaterialTheme.typography.labelSmallVariant,
-    )
-    Text(
-        stringResource(R.string.price, price),
-        style = MaterialTheme.typography.labelExtraBold,
-        color = Green
-    )
-}
 
 @PreviewMediumScreen
 @Composable

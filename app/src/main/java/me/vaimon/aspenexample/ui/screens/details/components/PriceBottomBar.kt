@@ -18,7 +18,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.ui.common.ActionButton
-import me.vaimon.aspenexample.ui.screens.details.PriceLabel
 import me.vaimon.aspenexample.ui.theme.ShadowBlue
 
 @Composable

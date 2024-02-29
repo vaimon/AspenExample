@@ -8,7 +8,7 @@ val Pink40 = Color(0xFF7D5260)
 
 val Blue = Color(0xFF176FF2)
 val SoftBlue = Color(0xFF84ABE4)
-val ShadowBlue = Color(0x880038FF)
+val ShadowBlue = Color(0x4A0038FF)
 val VeryLightBlue = Color(0xFFF3F8FE)
 
 val Green = Color(0xFF2DD7A4)
