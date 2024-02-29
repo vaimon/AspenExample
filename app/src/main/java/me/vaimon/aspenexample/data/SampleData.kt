@@ -1,10 +1,30 @@
 package me.vaimon.aspenexample.data
 
 import me.vaimon.aspenexample.R
+import me.vaimon.aspenexample.ui.models.Facility
 import me.vaimon.aspenexample.ui.models.Hotel
 import me.vaimon.aspenexample.ui.models.Tour
 
 object SampleData {
+
+    val availableFacilities: List<Facility> = listOf(
+        Facility(
+            "1 Heater", R.drawable.icon_facility_wifi
+        ),
+        Facility(
+            "Dinner", R.drawable.icon_facility_utensils
+        ),
+        Facility(
+            "1 Tub", R.drawable.icon_facility_tub
+        ),
+        Facility(
+            "Pool", R.drawable.icon_facility_pool
+        ),
+        Facility(
+            "Wifi", R.drawable.icon_facility_wifi
+        ),
+    )
+
     val hotels = listOf(
         Hotel(
             id = 1,
@@ -14,7 +34,7 @@ object SampleData {
             rating = 4.1,
             reviewCount = 1298,
             price = 169,
-            facilities = listOf()
+            facilities = availableFacilities.drop(2)
         ),
         Hotel(
             id = 2,
@@ -24,7 +44,7 @@ object SampleData {
             rating = 4.5,
             reviewCount = 366,
             price = 199,
-            facilities = listOf()
+            facilities = availableFacilities
         ),
         Hotel(
             id = 3,
@@ -34,7 +54,7 @@ object SampleData {
             rating = 4.9,
             reviewCount = 10442,
             price = 279,
-            facilities = listOf()
+            facilities = availableFacilities.take(2)
         )
     )
 

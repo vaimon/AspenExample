@@ -34,6 +34,7 @@ import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.data.SampleData
 import me.vaimon.aspenexample.navigation.NavigationDestination
 import me.vaimon.aspenexample.ui.common.CompositeHeader
+import me.vaimon.aspenexample.ui.common.TitleWithAction
 import me.vaimon.aspenexample.ui.models.Hotel
 import me.vaimon.aspenexample.ui.models.Tour
 import me.vaimon.aspenexample.ui.screens.home.components.CategoryRow
@@ -41,9 +42,8 @@ import me.vaimon.aspenexample.ui.screens.home.components.CurrentLocationLabel
 import me.vaimon.aspenexample.ui.screens.home.components.LargeHotelCard
 import me.vaimon.aspenexample.ui.screens.home.components.SearchField
 import me.vaimon.aspenexample.ui.screens.home.components.SmallTourCard
-import me.vaimon.aspenexample.ui.screens.home.components.TitleWithAction
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
-import me.vaimon.aspenexample.ui.theme.LabelGray
+import me.vaimon.aspenexample.ui.theme.ColourfulGray
 import me.vaimon.aspenexample.ui.theme.SoftBlue
 import me.vaimon.aspenexample.ui.theme.labelSmallChipVariant
 import me.vaimon.aspenexample.util.PreviewMediumScreen
@@ -110,8 +110,8 @@ fun HomeBody(
         Spacer(modifier = Modifier.height(32.dp))
         TitleWithAction(
             titleText = stringResource(R.string.title_popular),
-            titleActionText = stringResource(R.string.label_see_all),
-            titleAction = {},
+            actionText = stringResource(R.string.label_see_all),
+            action = {},
             modifier = padding
         )
 
@@ -185,7 +185,7 @@ fun TourLengthLabel(
         modifier = modifier
             .border(2.dp, MaterialTheme.colorScheme.onSurfaceVariant, shape)
             .clip(shape)
-            .background(LabelGray)
+            .background(ColourfulGray)
             .padding(vertical = 4.dp, horizontal = 6.dp)
     )
 }

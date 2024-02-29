@@ -140,6 +140,11 @@ val Typography = Typography(
         fontSize = 13.sp,
         color = Gray
     ),
+    bodyMedium = TextStyle(
+        fontFamily = figtreeRegularFontFamily,
+        fontSize = 14.sp,
+        color = ColourfulGray
+    )
 )
 
 val Typography.headlineLargeSecondary: TextStyle

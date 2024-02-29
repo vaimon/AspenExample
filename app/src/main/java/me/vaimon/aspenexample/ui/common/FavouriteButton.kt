@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.ui.screens.home.components
+package me.vaimon.aspenexample.ui.common
 
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.ui.theme.Gray
@@ -22,6 +23,7 @@ import me.vaimon.aspenexample.ui.theme.Red
 @Composable
 fun FavouriteButton(
     onChecked: () -> Unit,
+    iconSize: Dp,
     modifier: Modifier = Modifier
 ) {
     var checked by remember { mutableStateOf(true) }
@@ -39,12 +41,12 @@ fun FavouriteButton(
             checkedContainerColor = MaterialTheme.colorScheme.background,
             checkedContentColor = Red
         ),
-        modifier = modifier.size(24.dp)
+        modifier = modifier
     ) {
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.icon_like),
             contentDescription = null,
-            modifier = Modifier.size(10.dp)
+            modifier = Modifier.size(iconSize)
         )
     }
 }

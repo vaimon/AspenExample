@@ -11,4 +11,5 @@
     <string name="label_see_all">See all</string>
     <string name="title_recommended">Recommended</string>
     <string name="label_hot_deal">Hot deal</string>
+    <string name="full_reviews_description">%1$s (%2$s Reviews)</string>
 </resources>

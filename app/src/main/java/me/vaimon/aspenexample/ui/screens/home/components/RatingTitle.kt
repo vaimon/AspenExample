@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.ui.theme.Yellow
 import me.vaimon.aspenexample.ui.theme.labelSmallChip
+import me.vaimon.aspenexample.util.formatRating
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale
@@ -61,7 +62,7 @@ fun RatingTitle(
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
-                text = DecimalFormat("#.#", DecimalFormatSymbols(Locale.US)).format(rating),
+                text = formatRating(rating),
                 style = MaterialTheme.typography.labelSmallChip,
                 fontSize = 10.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
