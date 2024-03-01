@@ -20,7 +20,8 @@ class HotelDomainDataMapper
             e.rating,
             e.reviewCount,
             e.price,
-            e.facilities.map { facilityDomainDataMapper.from(it) }
+            e.facilities.map { facilityDomainDataMapper.from(it) },
+            e.isFavourite
         )
     }
 
@@ -33,7 +34,8 @@ class HotelDomainDataMapper
             t.rating,
             t.reviewCount,
             t.price,
-            t.facilities.map { facilityDomainDataMapper.to(it) }
+            t.facilities.map { facilityDomainDataMapper.to(it) },
+            t.isFavourite
         )
     }
 }

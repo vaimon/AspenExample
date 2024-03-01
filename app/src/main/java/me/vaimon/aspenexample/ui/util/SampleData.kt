@@ -34,7 +34,8 @@ object SampleData {
             rating = 4.1,
             reviewCount = 1298,
             price = 169,
-            facilities = availableFacilities.drop(2)
+            facilities = availableFacilities.drop(2),
+            isFavourite = false
         ),
         Hotel(
             id = 2,
@@ -44,7 +45,8 @@ object SampleData {
             rating = 4.5,
             reviewCount = 366,
             price = 199,
-            facilities = availableFacilities
+            facilities = availableFacilities,
+            isFavourite = false
         ),
         Hotel(
             id = 3,
@@ -54,7 +56,8 @@ object SampleData {
             rating = 4.9,
             reviewCount = 10442,
             price = 279,
-            facilities = availableFacilities.take(2)
+            facilities = availableFacilities.take(2),
+            isFavourite = false
         )
     )
 

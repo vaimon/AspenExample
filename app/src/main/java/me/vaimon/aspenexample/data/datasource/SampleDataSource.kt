@@ -27,7 +27,7 @@ class SampleDataSource @Inject constructor() {
         ),
     )
 
-    val hotels = listOf(
+    val hotels = mutableListOf(
         HotelData(
             id = 1,
             name = "Alley Palace",
@@ -36,7 +36,8 @@ class SampleDataSource @Inject constructor() {
             rating = 4.1,
             reviewCount = 1298,
             price = 169,
-            facilities = availableFacilities.drop(2)
+            facilities = availableFacilities.drop(2),
+            isFavourite = false
         ),
         HotelData(
             id = 2,
@@ -46,7 +47,8 @@ class SampleDataSource @Inject constructor() {
             rating = 4.5,
             reviewCount = 366,
             price = 199,
-            facilities = availableFacilities
+            facilities = availableFacilities,
+            isFavourite = true
         ),
         HotelData(
             id = 3,
@@ -56,11 +58,15 @@ class SampleDataSource @Inject constructor() {
             rating = 4.9,
             reviewCount = 10442,
             price = 279,
-            facilities = availableFacilities.take(2)
+            facilities = availableFacilities.take(2),
+            isFavourite = false
         )
     )
 
     fun getHotelById(id: Int): HotelData = hotels[id - 1]
+    fun setHotelFavourite(id: Int, favourite: Boolean) {
+        hotels[id - 1] = hotels[id - 1].copy(isFavourite = favourite)
+    }
 
     val tours = listOf(
         TourData(

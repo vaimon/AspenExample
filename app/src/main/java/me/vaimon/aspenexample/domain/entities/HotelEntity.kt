@@ -1,6 +1,6 @@
 package me.vaimon.aspenexample.domain.entities
 
-class HotelEntity(
+data class HotelEntity(
     val id: Int,
     val name: String,
     val description: String,
@@ -8,5 +8,6 @@ class HotelEntity(
     val rating: Double,
     val reviewCount: Int,
     val price: Int,
-    val facilities: List<FacilityEntity>
+    val facilities: List<FacilityEntity>,
+    val isFavourite: Boolean
 )

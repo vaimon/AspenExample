@@ -22,16 +22,17 @@ import me.vaimon.aspenexample.ui.theme.Red
 
 @Composable
 fun FavouriteButton(
-    onChecked: () -> Unit,
+    onChecked: (Boolean) -> Unit,
     iconSize: Dp,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    initialValue: Boolean = true
 ) {
-    var checked by remember { mutableStateOf(true) }
+    var checked by remember { mutableStateOf(initialValue) }
     IconToggleButton(
         checked = checked,
         onCheckedChange = {
             checked = !checked
-            onChecked()
+            onChecked(checked)
         },
         colors = IconToggleButtonColors(
             containerColor = MaterialTheme.colorScheme.background,

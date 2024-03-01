@@ -31,12 +31,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
-import me.vaimon.aspenexample.data.datasource.SampleDataSource
-import me.vaimon.aspenexample.ui.navigation.NavigationDestination
 import me.vaimon.aspenexample.ui.common.CompositeHeader
 import me.vaimon.aspenexample.ui.common.TitleWithAction
 import me.vaimon.aspenexample.ui.models.Hotel
 import me.vaimon.aspenexample.ui.models.Tour
+import me.vaimon.aspenexample.ui.navigation.NavigationDestination
 import me.vaimon.aspenexample.ui.screens.home.components.CategoryRow
 import me.vaimon.aspenexample.ui.screens.home.components.CurrentLocationLabel
 import me.vaimon.aspenexample.ui.screens.home.components.LargeHotelCard
@@ -58,7 +57,7 @@ fun HomeScreen(
     viewModel: HomeViewModel,
     navigateToDetails: (Int) -> Unit
 ) {
-    val hotels by viewModel.hotelsState.collectAsState()
+    val hotels by viewModel.hotelsState.collectAsState(listOf())
     val tours by viewModel.toursState.collectAsState()
 
     val scrollState = rememberScrollState()
@@ -67,6 +66,9 @@ fun HomeScreen(
             hotels,
             tours,
             navigateToDetails,
+            onItemFavoured = { isFavourite, hotelId ->
+                viewModel.onHotelFavoured(hotelId, isFavourite)
+            },
             modifier = Modifier
                 .padding(it)
                 .verticalScroll(scrollState)
@@ -80,6 +82,7 @@ fun HomeBody(
     hotels: List<Hotel>,
     tours: List<Tour>,
     navigateToDetails: (Int) -> Unit,
+    onItemFavoured: (Boolean, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier.padding(vertical = 40.dp)) {
@@ -121,12 +124,20 @@ fun HomeBody(
             contentPadding = PaddingValues(horizontal = 20.dp),
             horizontalArrangement = Arrangement.spacedBy(20.dp)
         ) {
-            items(hotels) {
+            items(
+                hotels,
+                key = { it.id }
+            ) {
                 LargeHotelCard(
                     it,
-                    modifier = Modifier.height(240.dp).clickable {
-                        navigateToDetails(it.id)
-                    }
+                    onBtnFavouriteClick = { isFavourite ->
+                        onItemFavoured(isFavourite, it.id)
+                    },
+                    modifier = Modifier
+                        .height(240.dp)
+                        .clickable {
+                            navigateToDetails(it.id)
+                        }
                 )
             }
         }
@@ -157,7 +168,7 @@ fun HomeBody(
 fun HotDealLabel() {
     Row(
         modifier = Modifier.padding(horizontal = 6.dp, vertical = 4.dp)
-    ){
+    ) {
         Icon(
             painter = painterResource(id = R.drawable.icon_stonks),
             tint = SoftBlue,
@@ -201,6 +212,7 @@ fun PreviewHome() {
                 SampleData.hotels,
                 SampleData.tours,
                 navigateToDetails = {},
+                onItemFavoured = { _, _ -> },
                 modifier = Modifier
                     .padding(it)
                     .verticalScroll(rememberScrollState())

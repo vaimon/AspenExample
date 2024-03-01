@@ -10,5 +10,6 @@ data class HotelData(
     val rating: Double,
     val reviewCount: Int,
     val price: Int,
-    val facilities: List<FacilityData>
+    val facilities: List<FacilityData>,
+    val isFavourite: Boolean
 )

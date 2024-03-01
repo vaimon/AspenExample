@@ -119,9 +119,7 @@ fun ShowMoreButton(
 
 @PreviewMediumScreen
 @Composable
-fun PreviewShowMoreBig(
-    modifier: Modifier = Modifier
-) {
+fun PreviewShowMoreBig() {
     AspenExampleTheme {
         Surface {
             ExpandableText(
@@ -134,9 +132,7 @@ fun PreviewShowMoreBig(
 
 @PreviewMediumScreen
 @Composable
-fun PreviewShowMoreLittle(
-    modifier: Modifier = Modifier
-) {
+fun PreviewShowMoreLittle() {
     AspenExampleTheme {
         Surface(
         ) {

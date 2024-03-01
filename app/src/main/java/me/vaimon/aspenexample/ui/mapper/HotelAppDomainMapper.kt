@@ -19,7 +19,8 @@ class HotelAppDomainMapper @Inject constructor(
             e.rating,
             e.reviewCount,
             e.price,
-            e.facilities.map { facilityMapper.from(it) }
+            e.facilities.map { facilityMapper.from(it) },
+            e.isFavourite
         )
     }
 
@@ -32,7 +33,8 @@ class HotelAppDomainMapper @Inject constructor(
             t.rating,
             t.reviewCount,
             t.price,
-            t.facilities.map { facilityMapper.to(it) }
+            t.facilities.map { facilityMapper.to(it) },
+            t.isFavourite
         )
     }
 }

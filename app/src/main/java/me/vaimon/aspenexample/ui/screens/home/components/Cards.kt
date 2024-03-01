@@ -33,6 +33,7 @@ import me.vaimon.aspenexample.ui.theme.labelSmallVariant
 @Composable
 fun LargeHotelCard(
     hotel: Hotel,
+    onBtnFavouriteClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -58,7 +59,8 @@ fun LargeHotelCard(
                 Modifier.weight(1f)
             )
             FavouriteButton(
-                onChecked = {},
+                onChecked = onBtnFavouriteClick,
+                initialValue = hotel.isFavourite,
                 iconSize = 10.dp,
                 modifier = Modifier
                     .padding(bottom = 16.dp, end = 16.dp)

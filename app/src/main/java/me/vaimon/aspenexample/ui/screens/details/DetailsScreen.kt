@@ -80,6 +80,12 @@ fun DetailsScreen(
         Box {
             DetailsBody(
                 hotel = hotel,
+                onFavouriteClick = {
+                    viewModel.onBtnFavouriteClick(
+                        hotel.id,
+                        it
+                    )
+                },
                 modifier = Modifier
                     .padding(it)
                     .verticalScroll(scrollableContentState)
@@ -105,6 +111,7 @@ fun DetailsScreen(
 @Composable
 fun DetailsBody(
     hotel: Hotel,
+    onFavouriteClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -113,7 +120,8 @@ fun DetailsBody(
 
         FullHotelImage(
             imageUri = hotel.imageUri,
-            onFavouriteClick = { /*TODO*/ }
+            isFavourite = hotel.isFavourite,
+            onFavouriteClick = onFavouriteClick
         )
 
         Spacer(modifier = Modifier.height(14.dp))
@@ -138,7 +146,8 @@ fun DetailsBody(
 @Composable
 fun FullHotelImage(
     imageUri: String,
-    onFavouriteClick: () -> Unit,
+    isFavourite: Boolean,
+    onFavouriteClick: (Boolean) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
@@ -156,6 +165,7 @@ fun FullHotelImage(
         )
         FavouriteButton(
             iconSize = 24.dp,
+            initialValue = isFavourite,
             modifier = Modifier
                 .padding(end = 34.dp)
                 .size(44.dp)
@@ -211,7 +221,8 @@ fun PreviewDetails() {
             modifier = Modifier.fillMaxSize()
         ) {
             DetailsBody(
-                hotel = SampleData.getHotelById(2)
+                hotel = SampleData.getHotelById(2),
+                onFavouriteClick = {},
             )
         }
     }
