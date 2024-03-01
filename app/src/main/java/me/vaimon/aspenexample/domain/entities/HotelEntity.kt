@@ -1,8 +1,6 @@
-package me.vaimon.aspenexample.ui.models
+package me.vaimon.aspenexample.domain.entities
 
-import androidx.annotation.DrawableRes
-
-data class Hotel(
+class HotelEntity(
     val id: Int,
     val name: String,
     val description: String,
@@ -10,5 +8,5 @@ data class Hotel(
     val rating: Double,
     val reviewCount: Int,
     val price: Int,
-    val facilities: List<Facility>
+    val facilities: List<FacilityEntity>
 )

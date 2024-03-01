@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.navigation
+package me.vaimon.aspenexample.ui.navigation
 
 import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.core.Spring

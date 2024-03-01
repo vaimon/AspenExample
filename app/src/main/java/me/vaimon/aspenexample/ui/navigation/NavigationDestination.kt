@@ -1,10 +1,10 @@
-package me.vaimon.aspenexample.navigation
+package me.vaimon.aspenexample.ui.navigation
 
 interface NavigationDestination {
     val route: String
 }
 
-abstract class NavigationDestinationWithArg<T> : NavigationDestination{
+abstract class NavigationDestinationWithArg<T> : NavigationDestination {
     abstract val routeBase: String
     abstract val argName: String
     override val route: String

@@ -22,6 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import me.vaimon.aspenexample.ui.common.FavouriteButton
 import me.vaimon.aspenexample.ui.models.Hotel
 import me.vaimon.aspenexample.ui.models.Tour
@@ -38,8 +39,8 @@ fun LargeHotelCard(
         contentAlignment = Alignment.BottomCenter,
         modifier = modifier.aspectRatio(0.77f)
     ) {
-        Image(
-            painter = painterResource(id = hotel.image),
+        AsyncImage(
+            model = hotel.imageUri,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -81,8 +82,8 @@ fun SmallTourCard(
         modifier = modifier
     ) {
         Box{
-            Image(
-                painter = painterResource(id = tour.image),
+            AsyncImage(
+                model = tour.imageUri,
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier

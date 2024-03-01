@@ -23,7 +23,7 @@ import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
 import me.vaimon.aspenexample.ui.theme.Yellow
 import me.vaimon.aspenexample.ui.theme.labelSmallChip
-import me.vaimon.aspenexample.util.formatRating
+import me.vaimon.aspenexample.ui.util.formatRating
 import java.text.DecimalFormat
 import java.text.DecimalFormatSymbols
 import java.util.Locale

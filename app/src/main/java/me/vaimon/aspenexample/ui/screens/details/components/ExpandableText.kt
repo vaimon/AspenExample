@@ -31,9 +31,10 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
-import me.vaimon.aspenexample.data.SampleData
+import me.vaimon.aspenexample.data.datasource.SampleDataSource
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
-import me.vaimon.aspenexample.util.PreviewMediumScreen
+import me.vaimon.aspenexample.ui.util.PreviewMediumScreen
+import me.vaimon.aspenexample.ui.util.SampleData
 
 @Composable
 fun ExpandableText(

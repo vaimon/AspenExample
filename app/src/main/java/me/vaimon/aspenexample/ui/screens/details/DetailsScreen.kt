@@ -1,11 +1,7 @@
 package me.vaimon.aspenexample.ui.screens.details
 
-import androidx.annotation.DrawableRes
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -24,7 +20,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -35,12 +30,11 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import me.vaimon.aspenexample.R
-import me.vaimon.aspenexample.data.SampleData
-import me.vaimon.aspenexample.navigation.NavigationDestinationWithArg
+import me.vaimon.aspenexample.ui.navigation.NavigationDestinationWithArg
 import me.vaimon.aspenexample.ui.common.FavouriteButton
 import me.vaimon.aspenexample.ui.common.TitleWithAction
 import me.vaimon.aspenexample.ui.models.Hotel
@@ -50,12 +44,9 @@ import me.vaimon.aspenexample.ui.screens.details.components.PriceBottomBar
 import me.vaimon.aspenexample.ui.screens.details.components.ReviewsStats
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
 import me.vaimon.aspenexample.ui.theme.Gray
-import me.vaimon.aspenexample.ui.theme.Green
 import me.vaimon.aspenexample.ui.theme.ShadowBlue
-import me.vaimon.aspenexample.ui.theme.labelExtraBold
-import me.vaimon.aspenexample.ui.theme.labelSmallVariant
-import me.vaimon.aspenexample.util.PreviewMediumScreen
-import me.vaimon.aspenexample.util.conditional
+import me.vaimon.aspenexample.ui.util.PreviewMediumScreen
+import me.vaimon.aspenexample.ui.util.SampleData
 
 object DetailsDestination : NavigationDestinationWithArg<Int>() {
     override val routeBase = "details"
@@ -121,7 +112,7 @@ fun DetailsBody(
     ) {
 
         FullHotelImage(
-            image = hotel.image,
+            imageUri = hotel.imageUri,
             onFavouriteClick = { /*TODO*/ }
         )
 
@@ -146,15 +137,15 @@ fun DetailsBody(
 
 @Composable
 fun FullHotelImage(
-    @DrawableRes image: Int,
+    imageUri: String,
     onFavouriteClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier
     ) {
-        Image(
-            painter = painterResource(id = image),
+        AsyncImage(
+            model = imageUri,
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = Modifier

@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.util
+package me.vaimon.aspenexample.ui.util
 
 import androidx.compose.ui.Modifier
 

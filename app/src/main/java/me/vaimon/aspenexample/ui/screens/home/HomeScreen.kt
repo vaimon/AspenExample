@@ -28,12 +28,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import me.vaimon.aspenexample.R
-import me.vaimon.aspenexample.data.SampleData
-import me.vaimon.aspenexample.navigation.NavigationDestination
+import me.vaimon.aspenexample.data.datasource.SampleDataSource
+import me.vaimon.aspenexample.ui.navigation.NavigationDestination
 import me.vaimon.aspenexample.ui.common.CompositeHeader
 import me.vaimon.aspenexample.ui.common.TitleWithAction
 import me.vaimon.aspenexample.ui.models.Hotel
@@ -47,7 +46,8 @@ import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
 import me.vaimon.aspenexample.ui.theme.ColourfulGray
 import me.vaimon.aspenexample.ui.theme.SoftBlue
 import me.vaimon.aspenexample.ui.theme.labelSmallChipVariant
-import me.vaimon.aspenexample.util.PreviewMediumScreen
+import me.vaimon.aspenexample.ui.util.PreviewMediumScreen
+import me.vaimon.aspenexample.ui.util.SampleData
 
 object HomeDestination : NavigationDestination {
     override val route = "home"

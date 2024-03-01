@@ -1,8 +1,6 @@
-package me.vaimon.aspenexample.ui.models
+package me.vaimon.aspenexample.domain.entities
 
-import androidx.annotation.DrawableRes
-
-data class Tour(
+data class TourEntity(
     val title: String,
     val imageUri: String,
     val nightsCount: Int,

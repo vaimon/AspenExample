@@ -1,8 +1,8 @@
-package me.vaimon.aspenexample.ui.models
+package me.vaimon.aspenexample.data.models
 
 import androidx.annotation.DrawableRes
 
-data class Hotel(
+data class HotelData(
     val id: Int,
     val name: String,
     val description: String,
@@ -10,5 +10,5 @@ data class Hotel(
     val rating: Double,
     val reviewCount: Int,
     val price: Int,
-    val facilities: List<Facility>
+    val facilities: List<FacilityData>
 )

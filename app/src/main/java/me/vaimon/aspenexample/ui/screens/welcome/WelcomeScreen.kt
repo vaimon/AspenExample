@@ -20,11 +20,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import me.vaimon.aspenexample.R
-import me.vaimon.aspenexample.navigation.NavigationDestination
+import me.vaimon.aspenexample.ui.navigation.NavigationDestination
 import me.vaimon.aspenexample.ui.common.ActionButton
 import me.vaimon.aspenexample.ui.common.CompositeHeader
 import me.vaimon.aspenexample.ui.theme.AspenExampleTheme
-import me.vaimon.aspenexample.util.PreviewMediumScreen
+import me.vaimon.aspenexample.ui.util.PreviewMediumScreen
 
 object WelcomeDestination : NavigationDestination {
     override val route = "welcome"
