@@ -57,7 +57,7 @@ fun HomeScreen(
     viewModel: HomeViewModel,
     navigateToDetails: (Int) -> Unit
 ) {
-    val hotels by viewModel.hotelsState.collectAsState(listOf())
+    val hotels by viewModel.hotelsState.collectAsState()
     val tours by viewModel.toursState.collectAsState()
 
     val scrollState = rememberScrollState()

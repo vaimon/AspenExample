@@ -31,11 +31,11 @@ class HomeViewModel @Inject constructor(
 ) : ViewModel() {
 
     @OptIn(ExperimentalCoroutinesApi::class)
-    val hotelsState = getHotelsUseCase().map{
+    val hotelsState = getHotelsUseCase().mapLatest {
         it.map{
             hotelAppDomainMapper.from(it)
         }
-    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(), listOf())
+    }.stateIn(viewModelScope, SharingStarted.Lazily, listOf())
 
     val toursState = getToursUseCase().map{
         it.map{ tourAppDomainMapper.from(it)}
