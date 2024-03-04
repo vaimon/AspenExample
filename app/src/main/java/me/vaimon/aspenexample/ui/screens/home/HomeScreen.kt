@@ -55,7 +55,8 @@ object HomeDestination : NavigationDestination {
 @Composable
 fun HomeScreen(
     viewModel: HomeViewModel,
-    navigateToDetails: (Int) -> Unit
+    navigateToDetails: (Int) -> Unit,
+    showCityChooseBottomSheet: () -> Unit
 ) {
     val hotels by viewModel.hotelsState.collectAsState()
     val tours by viewModel.toursState.collectAsState()
@@ -69,6 +70,7 @@ fun HomeScreen(
             onItemFavoured = { isFavourite, hotelId ->
                 viewModel.onHotelFavoured(hotelId, isFavourite)
             },
+            showCityChooseBottomSheet = showCityChooseBottomSheet,
             modifier = Modifier
                 .padding(it)
                 .verticalScroll(scrollState)
@@ -82,6 +84,7 @@ fun HomeBody(
     hotels: List<Hotel>,
     tours: List<Tour>,
     navigateToDetails: (Int) -> Unit,
+    showCityChooseBottomSheet: () -> Unit,
     onItemFavoured: (Boolean, Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -100,7 +103,11 @@ fun HomeBody(
                 headerSize = 32.sp,
                 secondaryHeaderSize = 14.sp
             )
-            CurrentLocationLabel()
+            CurrentLocationLabel(
+                onClick = {
+                    showCityChooseBottomSheet()
+                }
+            )
         }
 
         Spacer(modifier = Modifier.height(24.dp))
@@ -213,6 +220,7 @@ fun PreviewHome() {
                 SampleData.tours,
                 navigateToDetails = {},
                 onItemFavoured = { _, _ -> },
+                showCityChooseBottomSheet = {},
                 modifier = Modifier
                     .padding(it)
                     .verticalScroll(rememberScrollState())

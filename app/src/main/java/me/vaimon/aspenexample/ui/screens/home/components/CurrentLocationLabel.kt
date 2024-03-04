@@ -1,6 +1,7 @@
 package me.vaimon.aspenexample.ui.screens.home.components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -18,11 +19,12 @@ import me.vaimon.aspenexample.R
 
 @Composable
 fun CurrentLocationLabel(
+    onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
-        modifier = modifier
+        modifier = modifier.clickable { onClick() }
     ) {
         Image(
             imageVector = ImageVector.vectorResource(id = R.drawable.icon_location),

@@ -6,12 +6,15 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import me.vaimon.aspenexample.data.mapper.FacilityDomainDataMapper
 import me.vaimon.aspenexample.data.mapper.HotelDomainDataMapper
+import me.vaimon.aspenexample.data.mapper.StateDomainDataMapper
 import me.vaimon.aspenexample.data.mapper.TourDomainDataMapper
 import me.vaimon.aspenexample.data.models.FacilityData
 import me.vaimon.aspenexample.data.models.HotelData
+import me.vaimon.aspenexample.data.models.StateData
 import me.vaimon.aspenexample.data.models.TourData
 import me.vaimon.aspenexample.domain.entities.FacilityEntity
 import me.vaimon.aspenexample.domain.entities.HotelEntity
+import me.vaimon.aspenexample.domain.entities.StateEntity
 import me.vaimon.aspenexample.domain.entities.TourEntity
 import me.vaimon.aspenexample.utill.Mapper
 
@@ -32,4 +35,9 @@ abstract class MapperModule {
     abstract fun provideTourDomainDataMapper(
         mapper: TourDomainDataMapper
     ): Mapper<TourEntity, TourData>
+
+    @Binds
+    abstract fun provideStateDomainDataMapper(
+        mapper: StateDomainDataMapper
+    ): Mapper<StateEntity, StateData>
 }

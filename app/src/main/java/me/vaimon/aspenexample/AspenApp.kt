@@ -10,8 +10,8 @@ import me.vaimon.aspenexample.ui.navigation.AspenNavHost
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AspenApp(navController: NavHostController = rememberNavController()) {
-    AspenNavHost(navController = navController)
+fun AspenApp() {
+    AspenNavHost()
 }
 
 @HiltAndroidApp

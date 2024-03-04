@@ -10,12 +10,15 @@ import me.vaimon.aspenexample.data.models.FacilityData
 import me.vaimon.aspenexample.data.models.HotelData
 import me.vaimon.aspenexample.domain.entities.FacilityEntity
 import me.vaimon.aspenexample.domain.entities.HotelEntity
+import me.vaimon.aspenexample.domain.entities.StateEntity
 import me.vaimon.aspenexample.domain.entities.TourEntity
 import me.vaimon.aspenexample.ui.mapper.FacilityAppDomainMapper
 import me.vaimon.aspenexample.ui.mapper.HotelAppDomainMapper
+import me.vaimon.aspenexample.ui.mapper.StateAppDomainMapper
 import me.vaimon.aspenexample.ui.mapper.TourAppDomainMapper
 import me.vaimon.aspenexample.ui.models.Facility
 import me.vaimon.aspenexample.ui.models.Hotel
+import me.vaimon.aspenexample.ui.models.State
 import me.vaimon.aspenexample.ui.models.Tour
 import me.vaimon.aspenexample.utill.Mapper
 
@@ -36,4 +39,9 @@ abstract class MapperModule {
     abstract fun provideTourAppDomainMapper(
         mapper: TourAppDomainMapper
     ): Mapper<Tour, TourEntity>
+
+    @Binds
+    abstract fun provideStateAppDomainMapper(
+        mapper: StateAppDomainMapper
+    ): Mapper<State, StateEntity>
 }
