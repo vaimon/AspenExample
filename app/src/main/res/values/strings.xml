@@ -17,5 +17,6 @@
     <string name="action_book">Book Now</string>
     <string name="label_read_more">Read more</string>
     <string name="label_hide">Hide</string>
-    <string name="header_state">Choose state</string>
+    <string name="header_state">State</string>
+    <string name="error_unknown">Unknown Error</string>
 </resources>

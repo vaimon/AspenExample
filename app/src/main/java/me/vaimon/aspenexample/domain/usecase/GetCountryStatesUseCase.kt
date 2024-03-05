@@ -9,5 +9,5 @@ import javax.inject.Inject
 class GetCountryStatesUseCase @Inject constructor(
     private val locationRepository: LocationRepository
 ){
-    operator fun invoke(): Flow<Resource<List<StateEntity>>> = locationRepository.getStates()
+    operator fun invoke(): Flow<Resource<List<StateEntity>>> = locationRepository.states
 }

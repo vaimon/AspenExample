@@ -1,11 +1,11 @@
 package me.vaimon.aspenexample.data.datasource
 
-import me.vaimon.aspenexample.data.models.retrofit.StateRequestBody
-import me.vaimon.aspenexample.data.models.retrofit.StateRequestResponse
+import me.vaimon.aspenexample.data.models.retrofit.CitiesRequestBody
+import me.vaimon.aspenexample.data.models.retrofit.CitiesRequestResponse
+import me.vaimon.aspenexample.data.models.retrofit.StatesRequestBody
+import me.vaimon.aspenexample.data.models.retrofit.StatesRequestResponse
 import retrofit2.http.Body
-import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Query
 
 interface LocationDataSource {
     companion object{
@@ -13,5 +13,8 @@ interface LocationDataSource {
     }
 
     @POST("countries/states")
-    suspend fun getStates(@Body requestBody: StateRequestBody): StateRequestResponse
+    suspend fun getStates(@Body requestBody: StatesRequestBody): StatesRequestResponse
+
+    @POST("countries/state/cities")
+    suspend fun getCitiesOfState(@Body requestBody: CitiesRequestBody): CitiesRequestResponse
 }

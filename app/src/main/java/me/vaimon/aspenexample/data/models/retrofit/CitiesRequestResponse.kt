@@ -1,6 +1,6 @@
 package me.vaimon.aspenexample.data.models.retrofit
 
-data class StateRequestResponse(
+data class CitiesRequestResponse(
     val error: Boolean,
-    val data: StatesListData
+    val data: List<String>
 )
