@@ -24,9 +24,9 @@ import me.vaimon.aspenexample.ui.screens.details.DetailsViewModel
 import me.vaimon.aspenexample.ui.screens.home.HomeDestination
 import me.vaimon.aspenexample.ui.screens.home.HomeScreen
 import me.vaimon.aspenexample.ui.screens.home.HomeViewModel
-import me.vaimon.aspenexample.ui.dialogs.CityChooseBottomSheet
-import me.vaimon.aspenexample.ui.dialogs.CityChooseDestination
-import me.vaimon.aspenexample.ui.dialogs.CityChooseViewModel
+import me.vaimon.aspenexample.ui.dialogs.choose_city.CityChooseBottomSheet
+import me.vaimon.aspenexample.ui.dialogs.choose_city.CityChooseDestination
+import me.vaimon.aspenexample.ui.dialogs.choose_city.CityChooseViewModel
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeDestination
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeScreen
 import me.vaimon.aspenexample.ui.screens.welcome.WelcomeViewModel

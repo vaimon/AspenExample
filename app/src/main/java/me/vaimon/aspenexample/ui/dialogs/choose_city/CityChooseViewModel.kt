@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.ui.dialogs
+package me.vaimon.aspenexample.ui.dialogs.choose_city
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -13,14 +13,12 @@ import kotlinx.coroutines.launch
 import me.vaimon.aspenexample.domain.entities.StateEntity
 import me.vaimon.aspenexample.domain.usecase.location.GetCitiesOfStateUseCase
 import me.vaimon.aspenexample.domain.usecase.location.GetCountryStatesUseCase
-import me.vaimon.aspenexample.domain.usecase.location.GetCurrentLocationUseCase
 import me.vaimon.aspenexample.domain.usecase.location.SaveLocationUseCase
 import me.vaimon.aspenexample.domain.usecase.location.SelectStateUseCase
 import me.vaimon.aspenexample.ui.models.State
 import me.vaimon.aspenexample.utill.Mapper
 import me.vaimon.aspenexample.utill.Resource
 import me.vaimon.aspenexample.utill.map
-import java.lang.IllegalStateException
 import javax.inject.Inject
 
 @HiltViewModel
