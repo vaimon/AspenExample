@@ -8,7 +8,8 @@ import javax.inject.Inject
 class StateAppDomainMapper @Inject constructor(): Mapper<State, StateEntity> {
     override fun from(e: StateEntity): State {
         return State(
-            e.name
+            e.name,
+            e.stateCode
         )
     }
 

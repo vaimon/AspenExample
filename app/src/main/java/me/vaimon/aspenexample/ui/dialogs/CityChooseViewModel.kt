@@ -42,17 +42,17 @@ class CityChooseViewModel @Inject constructor(
             Resource.Success(emptyList())
         )
 
-    private val _selectedState = MutableStateFlow<String?>(null)
-    val selectedState: StateFlow<String?> = _selectedState.asStateFlow()
+    private val _selectedState = MutableStateFlow<State?>(null)
+    val selectedState: StateFlow<State?> = _selectedState.asStateFlow()
     fun onStateSelected(state: State?) {
-        _selectedState.value = state?.name
+        _selectedState.value = state
         selectStateUseCase(state?.name)
     }
 
     fun onCitySelected(city: String){
         viewModelScope.launch {
             saveLocationUseCase(
-                state = selectedState.value ?: throw IllegalStateException(),
+                stateCode = _selectedState.value?.code,
                 city = city
             )
         }

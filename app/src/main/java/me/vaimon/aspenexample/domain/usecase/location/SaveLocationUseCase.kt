@@ -6,7 +6,7 @@ import javax.inject.Inject
 class SaveLocationUseCase @Inject constructor(
     private val locationRepository: LocationRepository
 ) {
-    suspend operator fun invoke(state: String, city: String){
-        locationRepository.saveLocation("$city, $state")
+    suspend operator fun invoke(stateCode: String?, city: String){
+        locationRepository.saveLocation("$city, ${stateCode ?: "USA"}")
     }
 }

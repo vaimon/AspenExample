@@ -88,7 +88,7 @@ fun CityChooseBottomSheet(
 @Composable
 fun ChooseCityBottomSheetBody(
     states: Resource<List<State>>,
-    selectedState: String?,
+    selectedState: State?,
     cities: Resource<List<String>>,
     onStateSelected: (State?) -> Unit,
     onCitySelected: (String) -> Unit,
@@ -113,7 +113,7 @@ fun ChooseCityBottomSheetBody(
                 )
             }
             Text(
-                text = selectedState ?: stringResource(R.string.header_state),
+                text = selectedState?.name ?: stringResource(R.string.header_state),
                 style = MaterialTheme.typography.headlineMedium,
                 color = VeryDarkGray,
                 fontSize = 24.sp,
