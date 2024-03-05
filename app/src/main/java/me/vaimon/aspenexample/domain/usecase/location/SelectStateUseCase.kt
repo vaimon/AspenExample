@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.domain.usecase
+package me.vaimon.aspenexample.domain.usecase.location
 
 import me.vaimon.aspenexample.domain.repository.LocationRepository
 import javax.inject.Inject

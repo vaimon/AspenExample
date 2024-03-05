@@ -19,6 +19,7 @@ import me.vaimon.aspenexample.R
 
 @Composable
 fun CurrentLocationLabel(
+    location: String?,
     onClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
@@ -32,7 +33,7 @@ fun CurrentLocationLabel(
         )
         Spacer(modifier = Modifier.width(4.dp))
         Text(
-            text = stringResource(R.string.location_default),
+            text = location ?: stringResource(R.string.location_unknown),
             style = MaterialTheme.typography.labelSmall
         )
         Spacer(modifier = Modifier.width(4.dp))

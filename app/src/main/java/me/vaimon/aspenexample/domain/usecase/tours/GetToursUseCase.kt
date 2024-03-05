@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.domain.usecase
+package me.vaimon.aspenexample.domain.usecase.tours
 
 import kotlinx.coroutines.flow.Flow
 import me.vaimon.aspenexample.domain.entities.HotelEntity

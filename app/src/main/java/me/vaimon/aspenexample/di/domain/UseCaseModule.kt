@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import me.vaimon.aspenexample.domain.usecase.GetHotelsUseCase
+import me.vaimon.aspenexample.domain.usecase.hotels.GetHotelsUseCase
 import me.vaimon.aspenexample.domain.repository.HotelRepository
 
 @Module

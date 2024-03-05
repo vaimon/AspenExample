@@ -8,5 +8,8 @@ interface LocationRepository {
     val states: Flow<Resource<List<StateEntity>>>
 
     val citiesOfState: Flow<Resource<List<String>>>
+
+    val currentLocation: Flow<String?>
     fun setState(state: String?)
+    suspend fun saveLocation(location: String)
 }

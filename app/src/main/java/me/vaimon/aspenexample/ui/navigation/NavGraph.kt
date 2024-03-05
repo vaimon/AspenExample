@@ -88,9 +88,12 @@ fun AspenNavHost(
                 val viewModel = hiltViewModel<CityChooseViewModel>()
                 CityChooseBottomSheet(
                     viewModel = viewModel,
+                    navigateBack = {
+                        navController.navigateUp()
+                    },
                     onDismiss = {
                         navController.navigateUp()
-                    }
+                    },
                 )
             }
 

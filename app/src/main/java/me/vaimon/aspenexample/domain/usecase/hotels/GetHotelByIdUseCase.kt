@@ -1,4 +1,4 @@
-package me.vaimon.aspenexample.domain.usecase
+package me.vaimon.aspenexample.domain.usecase.hotels
 
 import me.vaimon.aspenexample.domain.entities.HotelEntity
 import me.vaimon.aspenexample.domain.repository.HotelRepository

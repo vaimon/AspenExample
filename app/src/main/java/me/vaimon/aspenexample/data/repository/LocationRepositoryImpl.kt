@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.mapLatest
+import me.vaimon.aspenexample.data.datasource.DataStoreDataSource
 import me.vaimon.aspenexample.data.datasource.LocationDataSource
 import me.vaimon.aspenexample.data.models.StateData
 import me.vaimon.aspenexample.data.models.retrofit.CitiesRequestBody
@@ -21,6 +22,7 @@ import javax.inject.Inject
 
 class LocationRepositoryImpl @Inject constructor(
     private val locationDataSource: LocationDataSource,
+    private val dataStoreDataSource: DataStoreDataSource,
     private val stateDomainDataMapper: Mapper<StateEntity, StateData>
 ) : LocationRepository {
     companion object {
@@ -61,6 +63,12 @@ class LocationRepositoryImpl @Inject constructor(
             }
         }
     }.flowOn(Dispatchers.IO)
+
+    override val currentLocation: Flow<String?> = dataStoreDataSource.location
+
+    override suspend fun saveLocation(location: String) {
+        dataStoreDataSource.saveLocation(location)
+    }
 
     override fun setState(state: String?) {
         selectedState.value = state

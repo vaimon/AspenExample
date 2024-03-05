@@ -60,12 +60,14 @@ fun HomeScreen(
 ) {
     val hotels by viewModel.hotelsState.collectAsState()
     val tours by viewModel.toursState.collectAsState()
+    val currentLocation by viewModel.currentLocation.collectAsState()
 
     val scrollState = rememberScrollState()
     Scaffold {
         HomeBody(
             hotels,
             tours,
+            currentLocation,
             navigateToDetails,
             onItemFavoured = { isFavourite, hotelId ->
                 viewModel.onHotelFavoured(hotelId, isFavourite)
@@ -83,6 +85,7 @@ fun HomeScreen(
 fun HomeBody(
     hotels: List<Hotel>,
     tours: List<Tour>,
+    currentLocation: String?,
     navigateToDetails: (Int) -> Unit,
     showCityChooseBottomSheet: () -> Unit,
     onItemFavoured: (Boolean, Int) -> Unit,
@@ -104,6 +107,7 @@ fun HomeBody(
                 secondaryHeaderSize = 14.sp
             )
             CurrentLocationLabel(
+                location = currentLocation,
                 onClick = {
                     showCityChooseBottomSheet()
                 }
@@ -221,6 +225,7 @@ fun PreviewHome() {
                 navigateToDetails = {},
                 onItemFavoured = { _, _ -> },
                 showCityChooseBottomSheet = {},
+                currentLocation = null,
                 modifier = Modifier
                     .padding(it)
                     .verticalScroll(rememberScrollState())

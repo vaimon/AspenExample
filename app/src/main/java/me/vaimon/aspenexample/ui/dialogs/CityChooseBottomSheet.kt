@@ -25,6 +25,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -54,6 +55,7 @@ object CityChooseDestination : NavigationDestination {
 @Composable
 fun CityChooseBottomSheet(
     viewModel: CityChooseViewModel,
+    navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
     onDismiss: () -> Unit
 ) {
@@ -74,7 +76,11 @@ fun CityChooseBottomSheet(
             states = states,
             selectedState = selectedState,
             cities = cities,
-            onStateSelected = viewModel::onStateSelected
+            onStateSelected = viewModel::onStateSelected,
+            onCitySelected = {
+                viewModel.onCitySelected(it)
+                navigateBack()
+            }
         )
     }
 }
@@ -85,6 +91,7 @@ fun ChooseCityBottomSheetBody(
     selectedState: String?,
     cities: Resource<List<String>>,
     onStateSelected: (State?) -> Unit,
+    onCitySelected: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(
@@ -121,7 +128,7 @@ fun ChooseCityBottomSheetBody(
             if (selectedState != null)
                 LocationLoader(
                     data = cities,
-                    onItemSelected = {},
+                    onItemSelected = onCitySelected,
                 )
             else
                 LocationLoader(
@@ -215,6 +222,7 @@ fun CityChooseBottomSheetPreview() {
                 Resource.Loading,
                 null,
                 Resource.Loading,
+                {},
                 {}
             )
         }

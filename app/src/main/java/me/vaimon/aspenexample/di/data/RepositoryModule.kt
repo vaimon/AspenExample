@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import me.vaimon.aspenexample.data.datasource.DataStoreDataSource
 import me.vaimon.aspenexample.data.datasource.LocationDataSource
 import me.vaimon.aspenexample.data.datasource.SampleDataSource
 import me.vaimon.aspenexample.data.models.HotelData
@@ -41,10 +42,12 @@ class RepositoryModule {
     @Singleton
     fun provideLocationRepository(
         locationDataSource: LocationDataSource,
+        dataStoreDataSource: DataStoreDataSource,
         stateDomainDataMapper: Mapper<StateEntity, StateData>
     ): LocationRepository {
         return LocationRepositoryImpl(
             locationDataSource,
+            dataStoreDataSource,
             stateDomainDataMapper
         )
     }
